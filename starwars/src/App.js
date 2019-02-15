@@ -8,14 +8,14 @@ class App extends Component {
     super();
     this.state = {
       starwarsChars: [],
-      currentChars: 'https://swapi.co/api/people/',
+      currentChars: '',
       nextChars: '',
       prevChars: ''
     };
   }
 
   componentDidMount() {
-    this.getCharacters(`${this.state.currentChars}`);
+    this.getCharacters(`https://swapi.co/api/people/${this.state.currentChars.substring(28)}`);
   }
 
   getCharacters = URL => {
@@ -45,11 +45,18 @@ class App extends Component {
     )
   }
 
+  prevChars = () => {
+    this.setState({
+      currentChars: this.state.prevChars
+    }, () => this.getCharacters(this.state.currentChars)
+    )
+  }
+
   render() {
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
-        <CharacterList nextChars={this.nextChars} characters={this.state.starwarsChars} />
+        <CharacterList nextChars={this.nextChars} prevChars={this.prevChars} characters={this.state.starwarsChars} />
       </div>
     );
   }
