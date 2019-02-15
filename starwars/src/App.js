@@ -56,7 +56,13 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
-        <CharacterList nextChars={this.nextChars} prevChars={this.prevChars} characters={this.state.starwarsChars} />
+        <CharacterList
+          nextChars={this.nextChars}
+          prevChars={this.prevChars}
+          nextCharsState={this.state.nextChars}
+          prevCharsState={this.state.prevChars}
+          characters={this.state.starwarsChars}
+        />
       </div>
     );
   }

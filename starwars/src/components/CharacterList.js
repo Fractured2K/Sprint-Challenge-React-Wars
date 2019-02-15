@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Character from './Character';
+import Buttons from './Buttons';
 
 import './StarWars.css';
 
@@ -14,7 +15,12 @@ const CharacterList = props => {
                 ))}
             </div>
 
-            <button onClick={props.nextChars}>Next</button>
+            <Buttons
+                prevCharsState={props.prevCharsState}
+                prevChars={props.prevChars}
+                nextCharsState={props.nextCharsState}
+                nextChars={props.nextChars}
+            />
         </div>
     )
 }
