@@ -7,12 +7,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: []
+      starwarsChars: [],
+      currentChars: '',
+      nextChars: '',
+      prevChars: ''
     };
   }
 
   componentDidMount() {
-    this.getCharacters('https://swapi.co/api/people/');
+    this.getCharacters(`https://swapi.co/api/people/${this.state.currentChars}`);
   }
 
   getCharacters = URL => {
@@ -24,7 +27,11 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        this.setState({ starwarsChars: data.results });
+        this.setState({
+          starwarsChars: data.results,
+          nextChars: data.next,
+          prevChars: data.previous
+        });
       })
       .catch(err => {
         throw new Error(err);
