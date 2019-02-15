@@ -8,7 +8,7 @@ import './StarWars.css';
 const CharacterList = props => {
     return (
         <div>{props.characters.map(character => (
-            <Character character={character} />
+            <Character key={character.id} character={character} />
         ))}</div>
     )
 }
